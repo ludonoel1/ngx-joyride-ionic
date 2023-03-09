@@ -37,9 +37,9 @@ export const DEFAULT_DISTANCE_FROM_MARGIN_LEFT = 2;
 const DEFAULT_DISTANCE_FROM_MARGIN_BOTTOM = 5;
 const DEFAULT_DISTANCE_FROM_MARGIN_RIGHT = 5;
 export enum KEY_CODE {
-  RIGHT_ARROW = 39,
-  LEFT_ARROW = 37,
-  ESCAPE_KEY= 27
+    RIGHT_ARROW = 39,
+    LEFT_ARROW = 37,
+    ESCAPE_KEY = 27
 }
 
 @Component({
@@ -102,7 +102,7 @@ export class JoyrideStepComponent implements OnInit, OnDestroy, AfterViewInit {
         private readonly logger: LoggerService,
         private readonly optionsService: JoyrideOptionsService,
         private readonly templateService: TemplatesService
-    ) {}
+    ) { }
 
     ngOnInit(): void {
         // Need to Inject here otherwise you will obtain a circular dependency
@@ -209,19 +209,19 @@ export class JoyrideStepComponent implements OnInit, OnDestroy, AfterViewInit {
         this.targetAbsoluteLeft =
             position === 'fixed'
                 ? this.documentService.getElementFixedLeft(
-                      this.step.targetViewContainer.element
-                  )
+                    this.step.targetViewContainer.element
+                )
                 : this.documentService.getElementAbsoluteLeft(
-                      this.step.targetViewContainer.element
-                  );
+                    this.step.targetViewContainer.element
+                );
         this.targetAbsoluteTop =
             position === 'fixed'
-                ? this.documentService.getElementFixedTop(
-                      this.step.targetViewContainer.element
-                  )
+                ? this.documentService.getElementAbsoluteTop(
+                    this.step.targetViewContainer.element
+                )
                 : this.documentService.getElementAbsoluteTop(
-                      this.step.targetViewContainer.element
-                  );
+                    this.step.targetViewContainer.element
+                );
         this.setStepStyle();
     }
 
@@ -246,20 +246,20 @@ export class JoyrideStepComponent implements OnInit, OnDestroy, AfterViewInit {
 
     @HostListener('window:keyup', ['$event'])
     keyEvent(event: KeyboardEvent) {
-    console.log(event);
+        console.log(event);
 
-    if (event.keyCode === KEY_CODE.RIGHT_ARROW) {
-      if (this.isLastStep()) {
-        this.close();
-      } else {
-        this.next();
-      }
-    } else if (event.keyCode === KEY_CODE.LEFT_ARROW) {
-      this.prev();
-    } else if (event.keyCode === KEY_CODE.ESCAPE_KEY) {
-      this.close();
+        if (event.keyCode === KEY_CODE.RIGHT_ARROW) {
+            if (this.isLastStep()) {
+                this.close();
+            } else {
+                this.next();
+            }
+        } else if (event.keyCode === KEY_CODE.LEFT_ARROW) {
+            this.prev();
+        } else if (event.keyCode === KEY_CODE.ESCAPE_KEY) {
+            this.close();
+        }
     }
-  }
 
     prev() {
         this.joyrideStepService.prev();
@@ -483,9 +483,9 @@ export class JoyrideStepComponent implements OnInit, OnDestroy, AfterViewInit {
     private autofixRightPosition() {
         if (
             this.targetAbsoluteLeft +
-                this.targetWidth +
-                this.stepWidth +
-                this.arrowSize >
+            this.targetWidth +
+            this.stepWidth +
+            this.arrowSize >
             document.body.clientWidth
         ) {
             this.setStyleBottom();
@@ -495,9 +495,9 @@ export class JoyrideStepComponent implements OnInit, OnDestroy, AfterViewInit {
     private autofixBottomPosition() {
         if (
             this.targetAbsoluteTop +
-                this.stepHeight +
-                this.arrowSize +
-                this.targetHeight >
+            this.stepHeight +
+            this.arrowSize +
+            this.targetHeight >
             this.documentHeight
         ) {
             this.setStyleLeft();

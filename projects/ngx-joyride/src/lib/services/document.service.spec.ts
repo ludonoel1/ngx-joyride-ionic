@@ -99,7 +99,7 @@ describe('DocumentService', () => {
                         }
                     }
                 };
-                const top = documentService.getElementFixedTop(elementRef);
+                const top = documentService.getElementAbsoluteTop(elementRef);
 
                 expect(top).toBe(30);
             });

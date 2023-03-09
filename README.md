@@ -3,6 +3,11 @@
 [![codecov](https://codecov.io/gh/tnicola/ngx-joyride/branch/master/graph/badge.svg)](https://codecov.io/gh/tnicola/ngx-joyride)
 [![Cypress.io tests](https://img.shields.io/badge/cypress.io-tests-green.svg?style=flat-square)](https://dashboard.cypress.io/#/projects/3yary2/runs)
 
+
+# ADVICE
+
+    This is a fork project from march 2023, where I have fixed ios issues about wrong position for fixed position.
+
 # Angular Joyride
 
 An Angular Tour (Joyride) library built entirely in Angular, without using any heavy external dependencies like Bootstrap or JQuery.
@@ -17,14 +22,6 @@ For Angular 2+ (2 - 13)
 ## Demo
 
 See the [demo](https://tnicola.github.io/ngx-joyride/). Let's take a tour! ✈️ :earth_americas:
-
-## Install
-
-    npm install ngx-joyride --save
-
-or
-
-    yarn add ngx-joyride
 
 ## Usage
 

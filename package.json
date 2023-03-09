@@ -1,10 +1,10 @@
 {
-  "name": "workspace",
-  "version": "0.0.0",
+  "name": "workspace-ionic",
+  "version": "1.0.1",
   "scripts": {
     "ng": "ng",
     "start": "ng serve --port 4500",
-    "build": "ng build demo --configuration production",
+    "build": "ng build ngx-joyride --configuration production",
     "test": "ng test",
     "test:unit": "ng test ngx-joyride --browsers=ChromeHeadless --watch=false",
     "test:unit:ci": "CHROME_BIN=/usr/bin/google-chrome ng test ngx-joyride --browsers=ChromeHeadless --watch=false --code-coverage=true",
@@ -12,7 +12,7 @@
     "cy:run": "./node_modules/.bin/wait-on http-get://localhost:4500/ && cypress run",
     "lint": "ng lint"
   },
-  "private": true,
+  "private": false,
   "dependencies": {
     "@angular/animations": "^14.2.12",
     "@angular/common": "^14.2.12",

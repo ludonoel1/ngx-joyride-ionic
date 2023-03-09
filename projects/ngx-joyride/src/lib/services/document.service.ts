@@ -51,8 +51,8 @@ export class DocumentService implements IDocumentService {
     getElementAbsoluteTop(elementRef: ElementRef) {
         const scrollOffsets = this.getScrollOffsets();
         return (
-            elementRef.nativeElement.getBoundingClientRect().top +
-            scrollOffsets.y
+            elementRef.nativeElement.getBoundingClientRect().left +
+            scrollOffsets.x
         );
     }
 
@@ -88,7 +88,7 @@ export class DocumentService implements IDocumentService {
             ? this.getElementFixedLeft(elementRef)
             : this.getElementAbsoluteLeft(elementRef);
         const y1 = isElementFixed
-            ? this.getElementFixedTop(elementRef)
+            ? this.getElementAbsoluteTop(elementRef)
             : this.getElementAbsoluteTop(elementRef);
         const x2 =
             x1 + elementRef.nativeElement.getBoundingClientRect().width - 1;
@@ -107,9 +107,9 @@ export class DocumentService implements IDocumentService {
         if (elements1.length === 0 && elements2.length === 0) return 1;
         if (
             this.getFirstElementWithoutKeyword(elements1, keywordToDiscard) !==
-                elementRef.nativeElement ||
+            elementRef.nativeElement ||
             this.getFirstElementWithoutKeyword(elements2, keywordToDiscard) !==
-                elementRef.nativeElement
+            elementRef.nativeElement
         ) {
             return 2;
         }
@@ -121,7 +121,7 @@ export class DocumentService implements IDocumentService {
             elementRef.nativeElement
         );
         const top = isElementFixed
-            ? this.getElementFixedTop(elementRef)
+            ? this.getElementAbsoluteTop(elementRef)
             : this.getElementAbsoluteTop(elementRef);
         if (
             firstScrollableParent !== this.DOMService.getNativeDocument().body
@@ -192,16 +192,16 @@ export class DocumentService implements IDocumentService {
         const scroll = (node: any) =>
             regex.test(
                 style(node, 'overflow') +
-                    style(node, 'overflow-y') +
-                    style(node, 'overflow-x')
+                style(node, 'overflow-y') +
+                style(node, 'overflow-x')
             );
 
         const scrollparent = (node: any): any => {
             return !node || node === this.DOMService.getNativeDocument().body
                 ? this.DOMService.getNativeDocument().body
                 : scroll(node)
-                ? node
-                : scrollparent(node.parentNode);
+                    ? node
+                    : scrollparent(node.parentNode);
         };
 
         return scrollparent(node);
@@ -257,7 +257,7 @@ export class DocumentService implements IDocumentService {
                 parent = false;
             }
         } while (parent);
-        parents.forEach(function(parent) {
+        parents.forEach(function (parent) {
             return (parent.style.pointerEvents = 'all');
         });
         return parents;

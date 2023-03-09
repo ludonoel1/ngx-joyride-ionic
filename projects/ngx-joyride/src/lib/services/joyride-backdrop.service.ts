@@ -129,7 +129,7 @@ export class JoyrideBackdropService {
     private getTargetTotalTop(step: JoyrideStep) {
         let targetVC = step.targetViewContainer;
         return step.isElementOrAncestorFixed
-            ? this.documentService.getElementFixedTop(targetVC.element)
+            ? this.documentService.getElementAbsoluteTop(targetVC.element)
             : this.documentService.getElementAbsoluteTop(targetVC.element);
     }
 
